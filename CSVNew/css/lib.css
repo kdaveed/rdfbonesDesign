@@ -1,10 +1,14 @@
 /****
 Buttons 
 */
+.hoverCursor{
+	color : red
+}
+/*
 .hoverCursor : hover{
 	cursor : pointer;
 }
-
+*/
 .generalButton {
 	border : 1px solid black;
 	border-radius : 3px;

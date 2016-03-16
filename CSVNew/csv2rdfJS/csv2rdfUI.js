@@ -26,7 +26,7 @@ var csv2rdfUI = {
 			secondCol.append(csv2rdfUIConstant.getClassSelectorDivForMapping(
 					variableInScope, value))
 		})
-		saveButton = ui.getNewDiv("generalButton inline hidden").text("Save").click(function() {
+		saveButton = ui.getNewDiv("generalButton hidden").text("Save").click(function() {
 			csv2rdfClickEvents.saveVariableMapping(variableInScope)
 		})
 

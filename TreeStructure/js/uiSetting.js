@@ -12,7 +12,6 @@ var UIController = {
 	}
 }
 
-
 var UIElements = {
 		
 		classViewerId : "classViewer",
