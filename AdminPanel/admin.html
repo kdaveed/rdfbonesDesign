@@ -1,0 +1,156 @@
+<html> 
+	<meta charset = "utf8" >
+
+<script type = "text/javascript" src = "jquery-1.11.3.min.js"></script>
+<head>
+	<link rel = "stylesheet" type = "text/css" href = "admin.css">
+</head>	
+
+
+<body>
+
+<div id="getParticipants">
+	New IDE
+</div> 
+<div id = "participants">
+
+</div>
+
+<div class = "cont">
+	<div class ="entry">
+		<div class = "data">
+			A
+		</div>
+		<div class = "data">
+			A
+		</div>
+	</div>
+</div>
+<div class = "cont">
+	<div class ="entry">
+		<div class = "data">
+			B
+		</div>
+		<div class = "data">
+			B
+		</div>
+	</div>
+</div>
+<div>	
+	<div style="display:inline-block;">
+		Kutyalo
+	</div>
+	<div style="display:inline-block;">
+		<img src="P8.JPG" style="width:100px; height:100px;">
+	</div>
+</div>
+<script>
+
+var a = "<a href='http://www.google.com'>  \
+		<div> Kutya </div>  \
+	</a>"
+
+var div = $("<div/>", {
+		class : 'abc'})
+
+div.append(a)
+
+var adminPanel = {
+	
+	userRightLevel : 0 ,
+	userRightFields : ["Owner", "Admin", "Writer", " Reader"] ,
+	
+	onload : function(){
+		this.initObjects();
+		this.initEventListeners();
+		this.getParticipants.append(div)
+	} ,
+	
+	initObjects : function(){
+		this.getParticipants = $("#getParticipants") 
+		this.participants = $("#participants") 
+	} ,
+	
+	initEventListeners : function(){
+		
+		this.getParticipants.click(function(){
+			
+			var host = window.location.hostname;
+			var port = window.location.port;
+			var url = "http://" + host + ":" + port + "/?q=" + "query";
+			$.ajax({
+				url: url,
+				dataType: 'json',
+
+				complete: function(xhr, status) {
+
+					var results = $.parseJSON(xhr.responseText); 
+					console.log(results) 
+					$.each(results, function(index, value){
+						adminPanel.createField(value);
+				 	}) 
+				} 
+		 	}) 
+	 	}) 
+ 	} ,
+	
+	createField : function(result){
+		
+		console.log(result)
+		var cont = $("<div/>", { 
+			class :"entryContainer" 
+		})
+		
+		var entry = $("<div/>",{
+			class : " entry" ,
+		}).appendTo(cont)
+
+		$("<div/>" , {
+			text : result.name ,
+			class : "data"
+		}).appendTo(entry)
+		
+		if(this.userRightLevel < result.rightLevel){
+			adminPanel.getUserRightSelector(result.right, result.rightLevel).appendTo(entry)
+		} else {
+			//The user is not allowed to modify the right of this participant
+			console.log("what?")
+			$("<div/>" , {
+				text : result.right ,
+				class : "data" ,
+			}).appendTo(entry)
+		}
+		cont.appendTo(adminPanel.participants)
+	} ,
+	
+	
+	getUserRightSelector : function(right, rightLevel){
+		var selector = $("<select/>" , {
+			class : "" ,
+		})
+		for (var i = rightLevel; i < adminPanel.userRightFields.length; i++) {
+			if(right == adminPanel.userRightFields[i]){
+				selected = true;
+			} else {
+				selected = false;
+			}
+			$("<option/>" , {
+				selected : selected ,
+				value : i ,
+				text : adminPanel.userRightFields[i] ,
+			}).appendTo(selector) 
+		}
+		return selector;
+	} ,
+	
+}
+
+adminPanel.onload()
+	
+
+
+</script>
+
+
+</body > 
+</html>

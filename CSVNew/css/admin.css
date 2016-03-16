@@ -1,0 +1,168 @@
+/***************************************************************************
+* Variable fields
+****************************************************************************/
+.varField {
+	text-align: center;
+	margin: 3px;
+	padding: 3px;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-style: bold;
+}
+
+.literalField {
+	color: blue;
+	display: inline-block;
+}
+
+.literalNodeField{
+	color: blue;
+}
+
+.instanceField {
+	color: red;
+	/* In the instance list they have be on the top of each other */
+	display: block;
+}
+
+.rdfTypeDiv {
+	text-align: middle;
+	padding: 3px;
+	margin: 3px 15px;
+	border: 1px solid white;
+}
+
+/***************************************************************************
+* In the case if the fields are active
+****************************************************************************/
+.modifyNode:hover {
+	cursor: pointer;
+	border: 1px solid white;
+}
+
+.variables {
+	margin-left: 15px;
+	display: inline-block;
+}
+
+.nodeField {
+	width: 320px;
+	text-aling: center;
+}
+
+.tripleTitle {
+	width: 320px; //
+	margin-right: -4px;
+	font-style: italic;
+	text-align: center;
+}
+
+/***************************************************************************
+* Triple nodes
+****************************************************************************/
+.nodeContainer{
+	margin : 20px;
+	display : inline-block;
+	vertical-align : top;
+}
+
+.nodeTitle{
+	text-align : center;
+	font-style : italic;
+	border-bottom : 1px solid;
+	padding : 4px;
+}
+.auxNodeElement{
+	height : 30px;
+}
+.tripleNodeContainer {
+	width: 320px; 
+	height : 34px;
+	margin-right: -4px;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid white;
+	border-radius: 2px;
+}
+
+
+.tripleToNodeSelect {
+	cursor : pointer;
+	border : 1px solid black;
+}
+
+.tripleNodeHover:hover{
+	cursor : pointer;
+	border : 1px solid black;
+}
+/***************************************************************************
+* Triple nodes
+****************************************************************************/
+
+.csv2rdfImg {
+	width: 18px;
+	height: 18px;
+	padding-top: 2px;
+}
+
+.csv2rdfImg : hover {
+	cursor : pointer;
+}
+
+.csv2rdfEditContainer {
+	height : 26px;
+	margin : 3px;
+	margin-left : 10px
+}
+.csv2rdfImgContainer{
+	margin : 0 5px;	
+	display : inline-block;
+}
+.csv2rdfImgContainer:hover{
+	cursor : pointer
+}
+
+.saveButton {
+	border : 1px solid black;
+	border-radius : 3px;
+}
+.saveButton : hover{
+	cursor : pointer;
+	background-color : gray;
+}
+
+.nodeFieldHover : hover {
+	curson: pointer;
+}
+
+.firstCol{
+	width: 50px;
+	text-align: center;
+}
+
+.save {
+	border: 1px solid black;
+	padding: 3px;
+	width: 33px;
+}
+
+.save:hover {
+	background-color: #F6F6F6;
+	cursor: pointer;
+}
+
+.inline {
+	display: inline-block;
+}
+
+#delimiterSelector{
+	margin : 6px;
+	padding : 2px 5px;
+}
+
+.columnValues{
+	padding : 4px;
+	border-bottom : 1px solid black;
+	width : 120px;
+	margin-left : 12px;
+}

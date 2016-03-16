@@ -1,0 +1,27 @@
+.div200{
+	width : 200px;
+	height : 200px;
+}
+
+
+.div50{
+	width : 50px;
+	height : 50px;
+}
+
+.border{
+	border : 1px solid;
+}
+
+.img{
+	width: 100px;
+	height : 50px;
+}
+
+.margin10{
+	margin : 10px;
+}
+
+.center{
+	text-align:center;
+}

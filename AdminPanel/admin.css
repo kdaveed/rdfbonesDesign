@@ -1,0 +1,23 @@
+
+.entryContainer{
+	width : 600px;
+	border: 1px solid black;
+	margin : 5px;
+	background-color: #f7f9f9;
+}
+
+.entry{
+	display : table-cell;
+	vertical-align: middle;
+	height: 30px;
+}
+
+.data{
+	display : inline-block;
+	width : 200px;
+	margin: 0 10px;
+}
+
+.clear{
+	clear : both;
+}

@@ -1,0 +1,47 @@
+<html>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<style>
+
+.gifContainer{ 
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    z-index:-1;
+    background-color:black; 
+    opacity:0.1;
+  text-align: center;
+
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+</style>
+<head>
+<link rel = "stylesheet" type= "text/css" href = "itemList.css">
+</head>
+<body>
+	<div id="1" class="clk">1</div>
+	<div id="2" class="clk">2</div>
+	<div id="3" class="clk">3</div>
+	<div id="4" class="clk">4</div>
+	<div id="5" class="clk">5</div>
+	<div class = "gifContainer">
+		<span class="helper"></span><img src="loading.gif" style="width : 120px; height : 120px">
+	</div>
+</body>
+<script>
+	
+	$(".clk").click(function(){
+		console.log($(this).attr('id'))
+	})
+</script>
+
+</html>

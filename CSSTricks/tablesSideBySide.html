@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type = "text/css" href = "lib.css">
+</head>
+<style>
+#parent1 {
+	display: table;
+	text-align : center;
+}
+
+#child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inline *{
+    display: inline-block;
+}	
+
+</style>
+
+
+<body>
+<div class="inline">
+	<div id="parent" class="div200 border">
+    		<div id="child">Content here</div>
+	</div>
+	<div id="parent" class="div200 border">
+    		<div id="child">Content here</div>
+	</div>
+</div>
+<div id="parent" class="div200 border">
+    	<div id="child">Content here</div>
+	<div id="child">Content here</div>
+
+</div>
+
+
+</body>
+
+
+</html>

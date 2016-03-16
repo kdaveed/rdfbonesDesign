@@ -1,0 +1,15 @@
+.childrenContainer {
+	margin-left : 17px;
+}
+
+.imgContainer {
+	vertical-align : middle;
+	display : inline-block;
+	margin : 3px;
+	width : 16px;
+}
+
+.classLabel {
+	line-height : 20px;
+	display : inline-block;
+}

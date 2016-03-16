@@ -1,0 +1,44 @@
+/****
+Buttons 
+*/
+.hoverCursor : hover{
+	cursor : pointer;
+}
+
+.generalButton {
+	border : 1px solid black;
+	border-radius : 3px;
+	padding : 5px;
+}
+
+.inline {
+	display : inline-block;	
+}
+
+.hidden{
+	display : none;
+}
+
+.marginL5{
+	margin-left : 5px;
+}
+
+.marginL10{
+	margin-left : 10px;
+}
+
+.marginL15{
+	margin-left : 15px;
+}
+
+.marginL20{
+	margin-left : 20px;
+}
+
+.margin10 {
+	margin : 10px;
+}
+
+.margin20 {
+	margin : 20px;
+}

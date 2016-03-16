@@ -1,0 +1,214 @@
+<html> 
+	<meta charset = "utf8" >
+
+<script type = "text/javascript" src = "jquery-1.11.3.min.js"></script>
+<script type = "text/javascript" src = "library.js"></script>
+<head>
+	<link rel = "stylesheet" type = "text/css" href = "css/admin.css">
+	<link rel = "stylesheet" type = "text/css" href = "css/ontologyViewer.css">
+	<link rel = "stylesheet" type = "text/css" href = "css/csv2rdfStatic.css">
+	<link rel = "stylesheet" type = "text/css" href = "css/lib.css">
+</head>	
+
+
+<body>
+
+
+<div class="pageTitle"> 
+	CSV File Upload
+</div>
+
+<!-- 
+	Title and the file uploader form 
+-->
+<div id="delimiter" class = "stepTitle">
+	Select delimiter
+</div>
+<div id="delimiterSelector">
+	  Tab <input type="checkBox" id="tab" class="inline">  
+  	Comma <input type="checkBox" id="comma" class="inline">
+</div>
+
+<div id="fileUpload" class = "stepTitle disabled">
+	<div id="uploadCSV" class="inline ">
+		Upload CSV file
+	</div>
+	<div class = "inline">
+		<form enctype="multipart/form-data" >
+    		<input name="file" type="file" disabled/>
+    		<!-- <input id="" type="button" value="Upload" /> -->
+		</form>
+	</div>
+</div>
+
+<!-- 
+	Into this div will be the titles of the CSV files loaded
+-->	
+<div id ="literalsDiv" class ="variables"></div>
+
+<div id="defDependentInstances" class="stepTitle disabled">
+	<div class = "inline">
+		Add dependent instance definition
+	</div>
+	<div id="addDependentInstance" class="inline plus">
+		+
+	</div>
+</div>
+<div id="dependentInstances">
+</div>
+
+
+<div id="defNewInstances" class="stepTitle disabled">
+	<div class = "inline">
+		New Instances
+	</div>
+	<div id="addInstance" class="inline plus">
+		+
+	</div>
+</div>
+<div>
+	<div class ="instancesDiv variables">
+	</div>
+	<div id ="newInstanceTriple" class = "inline">
+	</div>
+</div>
+<div id="defTriples" class="stepTitle disabled">
+	<div class = "inline">
+		Triples with data
+	</div>
+	<div id="addTriple" class="inline plus">
+		+
+	</div>
+</div>
+
+<div id = "triples" class = "hidden">
+	<div id="subjectContainer" class="nodeContainer">
+		<div class="nodeTitle"> Subject </div>
+	</div>
+	<div id="predicateContainer" class="nodeContainer">
+		<div class="nodeTitle"> Predicate </div>
+	</div>	
+	<div id="objectContainer" class="nodeContainer">
+		<div class="nodeTitle"> Object </div>
+	</div>
+	<div id="modifyImgContainer" class="nodeContainer">
+				<div class="auxNodeElement"></div>
+	</div>
+</div>
+
+<div id = "saveButton" class="generalButton inline margin10 disabled">
+	Save
+</div>
+<div id = "resetButton" class="generalButton inline margin10 disabled">
+	Reset
+</div>
+
+<div id="propertySelectorContainer">
+	<div class="ontologyViewer">
+		<div class="selectorTitle">
+			Property Selector	
+		</div>
+		<div id="tableView">
+			
+			<div class="ontologyViewerContainer">
+				<div class="ontologyViewerTitle">Ontology</div>
+				<div class="ontologyViewerList" id="ontologyList"></div>
+			</div>
+			<div class="ontologyViewerContainer">
+				<div class="ontologyViewerTitle">Data Properties</div>
+				<div class="propertyViewerList" id="dataPropertyList"></div>
+			</div>
+			<div class="ontologyViewerContainer">
+				<div class="ontologyViewerTitle">Object Properties</div>
+				<div class="propertyViewerList" id="objectPropertyList"></div>	
+
+			</div>
+		</div>
+	</div>
+</div>
+<div id="classSelectorContainer">
+	<div class="ontologyViewer">
+		<div class="selectorTitle">
+			Class Selector	
+		</div>
+		<div id="tableView">
+			<div class="ontologyViewerContainer">
+				<div class="ontologyViewerTitle">Ontology</div>
+				<div class="ontologyViewerList" id="ontologyListClass"></div>
+			</div>
+			<div class="ontologyViewerContainer">
+				<div class="ontologyViewerTitle">Classes</div>
+				<div class="ontologyViewerList" id="classList"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+
+	//At first the jsp or ftl template loads the information needed for the viewer
+	var ontology = [
+		{ 	uri:"http://example1.org", 
+			name:"Example1",
+			dataProperties : [
+				{ name: "DP1", uri: "URI1" },
+				{ name: "DP2", uri: "URI2" }
+			] ,
+			objectProperties : [
+				{ name: "OP1", uri: "URI1" },
+				{ name: "OP2", uri: "URI2" }
+			] ,
+			classes : [
+				{ name: "OP1", uri: "URI1" },
+				{ name: "OP2", uri: "URI2" }
+			] ,
+		},
+		{ 	uri:"http://example1.org", 
+			name:"Example2",
+			dataProperties : [
+				{ name: "DP1", uri: "URI1" },
+				{ name: "DP2", uri: "URI2" }
+			] ,
+			objectProperties : [
+				{ name: "OP1", uri: "URI1" },
+				{ name: "OP2", uri: "URI2" }
+			] ,
+			classes : [
+				{ name: "OP1", uri: "URI1" },
+				{ name: "OP2", uri: "URI2" }
+			] ,
+		},
+		{ 
+			uri:"http://example2.org", 
+		   	name:"Example3",
+			dataProperties : [
+				{ name: "1DP1", uri: "URI1" },
+				{ name: "1DP2", uri: "URI2" }
+			] ,
+			objectProperties : [
+				{ name: "1OP1", uri: "URI1" },
+				{ name: "1OP2", uri: "URI2" }
+			] ,
+			classes : [
+				{ name: "1OP1", uri: "URI1" },
+				{ name: "1OP2", uri: "URI2" }
+			] ,
+		
+		},
+	]
+
+</script>
+<script>
+	var dependentDiv = null
+</script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfUIConstants.js"></script>
+<script type = "text/javascript" src="ontologyViewer.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfClickEvents.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfController.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfCSS.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfHTML.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfStateConstants.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfData.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfUI.js"></script>
+<script type = "text/javascript" src="csv2rdfJS/csv2rdfUIData.js"></script>
+</body > 
+</html>

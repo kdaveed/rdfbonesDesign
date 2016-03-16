@@ -1,0 +1,60 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="lib.css">
+</head>
+<style>
+
+.nodeContainer{
+	margin : 20px;
+	display : inline-block;
+	border : 1px solid black;
+	vertical-align: middle;
+}
+
+.nodeElement{
+	padding : 4px;
+}
+
+
+</style>
+
+
+<body>
+<div id = "cont" class="border">
+	<div id="subjectContainer" class="nodeContainer">
+		<div class="nodeElement"> Subject </div>
+		<div class="varField instanceField"> Subject dfdffddf</div>
+	</div>
+	<div id="predicateContainer" class="nodeContainer">
+		<div class="nodeElement"> Predicate </div>
+	</div>	
+	<div id="objectContainer" class="nodeContainer">
+		<div class="nodeElement"> Object </div>
+	</div>
+</div>
+<div>
+	The problem is that if there is multiple inline block element side by side
+and their content are diferently high, than the shorter ones are aligned to the 
+bottom.
+</br>
+Thus we need a vertical-align:top; to the inline-block container.
+</div>
+<div>
+	It works actually with middle as well. This means in the case of the 
+	inline block divs we can define the alignment of the children.
+</div>
+<div class="nodeContainer div200 border center">
+	<div class="border div50 margin10">
+		testdiv
+	</div>
+</div>
+<div>
+	So the vertical-align in case of the inline block element does not align it
+	vertically with respect to the parent div, but with respect to the other
+	inline block sibling elements.
+</div>
+</body>
+
+
+</html>
