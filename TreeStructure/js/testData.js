@@ -1,4 +1,5 @@
-	var classes = [
+
+var classes = [
 
 		            {
 	            superClass : {

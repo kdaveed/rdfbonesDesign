@@ -40,6 +40,10 @@ var clickEvents = {
 	minusImage : function(icon, childrenContainer){
 		UIController.showMinus(icon, $(this))
 		childrenContainer.hide()
+	},
+	
+	searchForString : function(textValue){
+		dataOperations.searchForString(textValue.toLowerCase())
 	}
 }
 

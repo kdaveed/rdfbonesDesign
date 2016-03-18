@@ -1,6 +1,18 @@
 /**
 *** Tree structure elements
 ***/
+.filterContainer {
+	width : 650px;
+	//height : 40px;
+	border-bottom : 1px solid black;
+}
+.searchBox {	
+	display : inline-block;
+	width: 200px; 
+	height: 25px;
+	margin-left : 20px;
+	margin-bottom : 5px;
+}
 
 .classToSelect:hover{
 	cursor : pointer;

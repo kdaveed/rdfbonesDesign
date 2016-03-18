@@ -1,18 +1,4 @@
-
-var UIController = {
-		
-	showPlus : function(icon){
-		icon.next().css("display", "inline-block")
-		icon.hide()
-	},
-	
-	showMinus : function(icon){
-		icon.prev().css("display", "inline-block")
-		icon.hide()
-	}
-}
-
-var UIElements = {
+var UIConstants = {
 		
 		classViewerId : "classViewer",
 		classViewer : $("#classViewer"),
@@ -48,23 +34,9 @@ var UIElements = {
 		
 		getFillerDiv : function(){
 			return ui.getNewDiv("imgContainer")
-		}
-}
+		},
 
-var UIConstants = {
-		
 		minusImgSrc : "img/minus.png",
 		plusImgSrc : "img/plus.png",
 		arrowImgSrc : "img/arrows.png",
 }
-
-
-var HTMLElements = {
-	
-	classViewerID : "classViewer",
-	classViewer : $("#classViewer"),
-	openAllDiv : $("#openAll"),
-	closeAllDiv : $("#closeAll"),
-}
-
-

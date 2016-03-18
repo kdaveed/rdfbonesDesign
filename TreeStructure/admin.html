@@ -9,22 +9,29 @@
 	</head>	
 	
 <body>
-	<div id="openAll" class="generalButton inline">
-		Open all
+	<div id = "filterContainer" class = "filterContainer">
+				
+		<input type = "text"  id="search" class ="searchBox" value="Search for class"> 
+		<div id="openAll" class="generalButton inline floatRight marginL10">
+			Open all
+		</div>
+		<div id="closeAll"class="generalButton inline floatRight marginL10">
+			Close all
+		</div>
 	</div>
-	<div id="closeAll"class="generalButton inline">
-		Close all
-	</div>
-	
+
 	<div id="classViewer">
 	</div>
 	
-	<div style = "height : 20px">
-	
+	<div onclick="UIController.deleteResults()">
+		Showresults
 	</div>
+	
+	
 	<script type = "text/javascript" src = "js/clickEvents.js"></script>
 	<script type = "text/javascript" src = "library.js"></script>
-	<script type = "text/javascript" src = "js/uiSetting.js"></script>
+	<script type = "text/javascript" src = "js/UIConstants.js"></script>
+	<script type = "text/javascript" src = "js/HTMLElements.js"></script>
 	<script type = "text/javascript" src = "js/testData.js"></script>
 	<script type = "text/javascript" src = "js/variables.js"></script>
 	<script type = "text/javascript" src = "js/uiController.js"></script>
