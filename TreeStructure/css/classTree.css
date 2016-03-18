@@ -37,3 +37,7 @@
 	line-height: 20px;
 	display: inline-block;
 }
+
+.searchHit {
+	font-weight: bold;
+}

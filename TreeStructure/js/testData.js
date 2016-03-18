@@ -1,5 +1,172 @@
-
 var classes = [
+
+	            {
+           superClass : {
+	    		label : "Abstract" ,
+	    		uri   : "http://vivoweb.org/ontology/core#Abstract"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Abstract" ,
+	    		uri   : "http://vivoweb.org/ontology/core#Abstract"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Academic Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/AcademicArticle"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Journal Article" ,
+	    		uri   : "http://purl.obolibrary.org/obo/IAO_0000013"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Academic Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/AcademicArticle"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Academic Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/AcademicArticle"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Journal Article" ,
+	    		uri   : "http://purl.obolibrary.org/obo/IAO_0000013"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Academic Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/AcademicArticle"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Blog Posting" ,
+	    		uri   : "http://vivoweb.org/ontology/core#BlogPosting"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Conference Paper" ,
+	    		uri   : "http://vivoweb.org/ontology/core#ConferencePaper"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Editorial Article" ,
+	    		uri   : "http://vivoweb.org/ontology/core#EditorialArticle"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Article" ,
+	    		uri   : "http://purl.org/ontology/bibo/Article"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Review" ,
+	    		uri   : "http://vivoweb.org/ontology/core#Review"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Audio Document" ,
+	    		uri   : "http://purl.org/ontology/bibo/AudioDocument"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Audio Document" ,
+	    		uri   : "http://purl.org/ontology/bibo/AudioDocument"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Audio-Visual Document" ,
+	    		uri   : "http://purl.org/ontology/bibo/AudioVisualDocument"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Audio-Visual Document" ,
+	    		uri   : "http://purl.org/ontology/bibo/AudioVisualDocument"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Audio-Visual Document" ,
+	    		uri   : "http://purl.org/ontology/bibo/AudioVisualDocument"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Film" ,
+	    		uri   : "http://purl.org/ontology/bibo/Film"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Audio-Visual Document" ,
+	    		uri   : "http://purl.org/ontology/bibo/AudioVisualDocument"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Video" ,
+	    		uri   : "http://vivoweb.org/ontology/core#Video"
+	    	}
+         },	     
+           {
+           superClass : {
+	    		label : "Bill" ,
+	    		uri   : "http://purl.org/ontology/bibo/Bill"
+	    	},
+	    	
+	    	subClass : {
+	    		label : "Bill" ,
+	    		uri   : "http://purl.org/ontology/bibo/Bill"
+	    	}
+         }	     
+        ]
+var classes1 = [
 
 		            {
 	            superClass : {

@@ -35,7 +35,9 @@ var UIController = {
 	getChildrenDiv : function(parent) {
 
 		var container = UIConstants.getChildrenContainer()
-		var className = UIConstants.getClassNameDiv(parent.label)
+		var className1 = UIConstants.getClassNameDiv(parent.label)
+		var searchHit = UIConstants.getSearchHitDiv()
+		var className2 = UIConstants.getClassNameDiv()
 		var childrenContainer = ui.getNewDiv()
 		$.each(parent.children, function(index, value) {
 			childrenContainer.append(UIController.getChildrenDiv(value))
@@ -59,11 +61,15 @@ var UIController = {
 			var fillerDiv = UIConstants.getFillerDiv()
 			container.append(fillerDiv)
 		}
-		container.append(className)
+		container.append(className1).append(searchHit).append(className2)
+		
 		container.append(childrenContainer.hide())
 		
 		parent.div = container
-		
+		parent.className1 = className1
+		parent.searchHit = searchHit
+		parent.className2 = className2
+		parent.childrenContainer = childrenContainer
 		return container
 	},
 	
@@ -77,11 +83,18 @@ var UIController = {
 	},
 	
 	showSearchResults : function() {
+		console.log(classHierarcyVars.parents)
 		$.each(classHierarcyVars.parents, function(index, value) {
 			if(value.toDisplay){
 				console.log("ToDisplay " + index + " label " + value.label)
-				UIController.setDisplay(value)
+				value.div.show()
+				if(value.searchIndex > -1){
+					UIController.displaySearchHit(value)
+				} else {
+					UIController.displayNoSearchHit(value)
+				}
 				if (value.childToDisplay) {
+					UIController.setDisplay(value)
 					UIController.showChildrenDiv(value)
 				}
 			} else {
@@ -90,24 +103,45 @@ var UIController = {
 			}
 		})
 	},
+	
+	
 
 	showChildrenDiv : function(parent) {
 		$.each(parent.children, function(index, value) {
 			if (value.toDisplay) {
-				UIController.setDisplay(value)
+				console.log("ToDisplay " + index + " label " + value.label)
+				value.div.show()
+				if(value.searchIndex > -1){
+					UIController.displaySearchHit(value)
+				} else {
+					UIController.displayNoSearchHit(value)
+				}
 				if (value.childToDisplay) {
+					UIController.setDisplay(value)
 					UIController.showChildrenDiv(value)
 				}
 			} else {
-				value.div.addClass("redBorder")
+				value.div.hide()
 			}
 		})
 	},
 
-
+	displaySearchHit : function(element){
+		console.log("searchindex + " + element.searchIndex)
+		element.className1.text(element.label.substring(0, element.searchIndex))
+		element.searchHit.text(element.label.substring(element.searchIndex, element.searchIndex + classHierarcyVars.searchStringLength))
+		element.className2.text(element.label.substring(element.searchIndex + classHierarcyVars.searchStringLength))
+	},
+	
+	displayNoSearchHit : function(element){
+		element.className1.text(element.label)
+		element.searchHit.text("")
+		element.className2.text("")
+	},
+	
 	setDisplay : function(element) {
 
-		element.div.show()
+		element.childrenContainer.show()
 		if (element.children.length > 0) {
 			if (element.childToDisplay) {
 				element.plusButton.hide()

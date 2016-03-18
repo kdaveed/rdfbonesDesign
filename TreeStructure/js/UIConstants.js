@@ -10,7 +10,11 @@ var UIConstants = {
 		getClassNameDiv : function(classLabel){
 			return ui.getNewDivT(classLabel).addClass("classLabel")
 		},
-	
+		
+		getSearchHitDiv : function(){
+			return ui.getNewDivT().addClass("searchHit classLabel")
+		},
+		
 		getPlusImg : function(){
 			var container = ui.getNewDiv("imgContainer")
 			var img = $("<img/>")

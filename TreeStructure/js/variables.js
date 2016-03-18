@@ -1,4 +1,8 @@
-
+var a="abcdefgh"
+	
+console.log(a.substring(0,a.indexOf("cde")))
+console.log(a.substring(a.indexOf("cde"), a.indexOf("cde") + 3))
+console.log(a.substring(a.indexOf("cde") + 3))
 
 var dataOperations = {
 		
@@ -114,6 +118,7 @@ var dataOperations = {
 		},
 		
 		searchForString : function(searchString){
+			classHierarcyVars.searchStringLength = searchString.length
 			console.log("SearchString  " + searchString)
 			var bools = []
 			$.each(classHierarcyVars.parents, function(index, value){
@@ -128,6 +133,7 @@ var dataOperations = {
 
 			parent.toDisplay = false
 			parent.childToDisplay = false
+			parent.searchIndex = parent.label.toLowerCase().indexOf(searchString) 
 			if(parent.label.toLowerCase().indexOf(searchString) > -1){
 				console.log(parent.label)
 				parent.toDisplay = true
@@ -139,16 +145,20 @@ var dataOperations = {
 				$.each(bools, function(index, boolValue){
 					if(boolValue){
 						parent.childToDisplay = true
+						parent.toDisplay = true
 					}
 				})
 			})
 			return parent.toDisplay
 		}
+		
+		
+		
 }
 
 var classHierarcyVars = {
 		
-		
+		searchStringLength : 0,
 		classMapping : new Object(),
 		directPairs : [],
 		parentMap : new Object(),
