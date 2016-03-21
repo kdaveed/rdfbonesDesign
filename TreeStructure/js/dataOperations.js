@@ -1,9 +1,3 @@
-var a="abcdefgh"
-	
-console.log(a.substring(0,a.indexOf("cde")))
-console.log(a.substring(a.indexOf("cde"), a.indexOf("cde") + 3))
-console.log(a.substring(a.indexOf("cde") + 3))
-
 var dataOperations = {
 		
 		makeMaps : function(classes){
@@ -14,8 +8,6 @@ var dataOperations = {
 						classHierarcyVars.parentMap[value.subClass.label] = []
 					}
 					classHierarcyVars.parentMap[value.subClass.label].push(index)
-					
-
 				} else {
 					if(classHierarcyVars.classMapping[value.subClass.label] == undefined){
 						classHierarcyVars.classMapping[value.subClass.label] = index
@@ -51,7 +43,7 @@ var dataOperations = {
 					realPairs.push(returnId)
 				}
 			})
-			console.log("Real Pairs")
+
 			$.each(realPairs, function(index, value){
 				
 				if(classHierarcyVars.childrenMap[classes[value].superClass.label] == undefined){
@@ -60,22 +52,23 @@ var dataOperations = {
 				classHierarcyVars.childrenMap[classes[value].superClass.label].push(value)
 			})
 			
-			console.log(firstParentMap)
-			console.log(classHierarcyVars.childrenMap)
+			//console.log(firstParentMap)
+			//console.log(classHierarcyVars.childrenMap)
 			
 			$.each(firstParentMap, function(index, value){
 				objectId = classHierarcyVars.classMapping[index]
 				parentObject = dataOperations.createClassObject(classes[objectId].superClass)
-				console.log(parentObject)
+				//console.log(parentObject)
+				classHierarcyVars.classObjects[parentObject.label] = parentObject
 				if(classHierarcyVars.childrenMap[index] != undefined){
 					//It has a child
-					console.log("Child")
-					console.log(classHierarcyVars.childrenMap[index])
+					//console.log("Child")
+					//console.log(classHierarcyVars.childrenMap[index])
 					dataOperations.fillChildren(parentObject, classHierarcyVars.childrenMap[index])
 				}
 				//Final
-				console.log("Final parent object")
-				console.log(parentObject)
+				//console.log("Final parent object")
+				//console.log(parentObject)
 				classHierarcyVars.parents.push(parentObject)
 			})
 			console.log(classHierarcyVars.parents)
@@ -85,24 +78,22 @@ var dataOperations = {
 			$.each(childrenList, function(index, value){
 				var className = classes[value].subClass
 				var parentObj = dataOperations.createClassObject(className)
-				
-				console.log(parentObj)
+				classHierarcyVars.classObjects[parentObject.label] = parentObject
+				//console.log(parentObj)
 				if(classHierarcyVars.childrenMap[className.label] != undefined){
 					//It has a child
-					console.log("GrandChild")
-					console.log(classHierarcyVars.childrenMap[className.label])
+					//console.log("GrandChild")
+					//console.log(classHierarcyVars.childrenMap[className.label])
 					dataOperations.fillChildren(parentObj, classHierarcyVars.childrenMap[className.label])
-				} else {
-					console.log("undefined")
-				}
+				} 
 				parentObject.children.push(parentObj)
-				console.log("After new child")
-				console.log(parentObject)
-				console.log("Children")
+				//console.log("After new child")
+				//console.log(parentObject)
+				//console.log("Children")
 				$.each(parentObject.children, function(index, value){
-					console.log(value)
+					//console.log(value)
 				})
-				console.log("End of children")
+				//console.log("End of children")
 			})
 		},
 		
@@ -151,9 +142,6 @@ var dataOperations = {
 			})
 			return parent.toDisplay
 		}
-		
-		
-		
 }
 
 var classHierarcyVars = {
@@ -166,6 +154,7 @@ var classHierarcyVars = {
 		childrenGroupDivs : [],
 		childrenList : [],
 		classList : [],
+		classObjects : new Object(),
 		classLabelList : [],
 		parents : [],	
 		

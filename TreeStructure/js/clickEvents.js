@@ -1,6 +1,11 @@
 
 var clickEvents = {
 		
+		
+	addBone : function(classLabel){
+		UIController.saveBone(classLabel)
+	},
+	
 	openAll : function(){
 
 		$("div#" + HTMLElements.classViewerID + " img").each(function(){

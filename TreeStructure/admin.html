@@ -1,39 +1,215 @@
-<html> 
-	<meta charset = "utf8" >
-	
-	<script type = "text/javascript" src = "jquery-1.11.3.min.js"></script>
-	<link rel = "stylesheet" type = "text/css" href = "css/classTree.css">
-	<link rel = "stylesheet" type = "text/css" href = "css/lib.css">
-	
-	<head>
-	</head>	
-	
+<html>
+<meta charset="utf8">
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/classTree.css">
+<link rel="stylesheet" type="text/css" href="css/editBone.css">
+<link rel="stylesheet" type="text/css" href="css/existingBone.css">
+<link rel="stylesheet" type="text/css" href="css/lib.css">
+
+<head>
+</head>
+
 <body>
-	<div id = "filterContainer" class = "filterContainer">
-				
-		<input type = "text"  id="search" class ="searchBox" value="Search for class"> 
+
+	<div id="filterContainer" class="filterContainer hidden">
+		<input type="text" id="search" class="searchBox"
+			value="Search for class">
 		<div id="openAll" class="generalButton inline floatRight marginL10">
-			Open all
+			Open all</div>
+		<div id="closeAll" class="generalButton inline floatRight marginL10">
+			Close all</div>
+	</div>
+
+	<!---------------------------------------------------------------------
+	Existing Coherent Bones
+	 --------------------------------------------------------------------->
+	
+	<div id="viewCoherentBones" class ="container">
+	<div class="title">Coherent bones</div>
+		<div id="tableTitle">
+			<div class="columnTitle id">ID</div>
+			<div class="columnTitle type">Type</div>
+			<div class="columnTitle description">Description</div>
+			<div class="columnTitle images">Images</div>
 		</div>
-		<div id="closeAll"class="generalButton inline floatRight marginL10">
-			Close all
+		<div id="existingCoherentBones">
+			<div class="valueContainer ">
+				<div class="columnValue id">n203</div>
+				<div class="columnValue type">Skull</div>
+				<div class="columnValue description">Description</div>
+				<div class="columnValue images">Images</div>
+			</div>
+			<div class="valueContainer ">
+				<div class="columnValue id">n204</div>
+				<div class="columnValue type">Skull</div>
+				<div class="columnValue description">Description</div>
+				<div class="columnValue images">Images</div>
+			</div>
+		</div>
+	</div>
+	<div class="newLine"></div>
+	
+	<!---------------------------------------------------------------------
+	Add new coherent bone
+	 --------------------------------------------------------------------->	
+	
+	<div class="addNewButton" id="addCoherentBoneContainer" >
+		<div class="textNextToImg">
+			Add new 
+		</div>
+		<div id="addCoherentBone" class ="imgFrame">
+			<span class="imgHelper"></span>
+			<img class="imgMiddle" src="img/addInstance.png" />
+		</div>
+	</div>
+	<div class="newLine"></div>
+	<!---------------------------------------------------------------------
+	Select class for new coherent bone
+	 --------------------------------------------------------------------->	
+	
+	<div id="selectCoherentClass" class="container hidden">
+		<div class="title">Select new coherent bone</div>
+	</div>
+	
+	
+	<!---------------------------------------------------------------------
+	Existing Single Bones
+	 --------------------------------------------------------------------->
+	
+	<div id="viewSingleBones">
+		<div class="title">Single bones</div>
+		<div id="tableTitle">
+			<div class="columnTitle id">ID</div>
+			<div class="columnTitle type">Type</div>
+			<div class="columnTitle description">Description</div>
+			<div class="columnTitle images">Images</div>
+		</div>
+		<div id="existingSingleBones">
+			<div class="valueContainer ">
+				<div class="columnValue id">n205</div>
+				<div class="columnValue type">Skull</div>
+				<div class="columnValue description">Description</div>
+				<div class="columnValue images">Images</div>
+			</div>
+			<div class="valueContainer ">
+				<div class="columnValue id">n206</div>
+				<div class="columnValue type">Skull</div>
+				<div class="columnValue description">Description</div>
+				<div class="columnValue images">Images</div>
+			</div>	
+		</div>
+	</div>
+	<div class="newLine"></div>
+	
+	<div class="addNewButton" id="addSingleBoneContainer" >
+		<div class="textNextToImg">
+			Add new 
+		</div>
+		<div id="addSingleBone" class ="imgFrame">
+			<span class="imgHelper"></span>
+			<img class="imgMiddle" src="img/addInstance.png" />
+		</div>
+	</div>
+	
+	<div id="editSingleBone" class = "editBoneContainer hidden">
+		<div class="floatRight" id="exitEditSingleBone">
+			<img src="img/close.png">
+		</div>
+		<div >
+			<img src="img/backToParent.png">
+			<div class="inline">Back to parent bone</div>
+		</div>
+		<div class="newLine"></div>
+
+		<div class="title">Images</div>
+		<div class="imageContainer"></div>
+		<div class="margin10">
+			<input type = "file" class="fileUpload" value="Upload new image"/>
+			
+		</div>	
+			
+		<div class="title">Description</div>
+		<div class="descriptionContainer">Lorem ipsum dolor sit amet,
+			consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+			ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+			eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+			gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			Lorem ipsum dolor sit amet,</div>
+		<div class="button">Edit</div>
+	</div>
+	
+	<!---------------------------------------------------------------------
+	Select class for new single bone
+	 --------------------------------------------------------------------->	
+
+	<div id="selectSingleClass" class="container hidden">
+		<div class="title">Select new single bone</div>
+	</div>
+
+
+	<!---------------------------------------------------------------------
+	Edit  bone
+	 --------------------------------------------------------------------->	
+	<div id="editBone" class="fullScreen hidden">
+		<div  class="editBoneContainer">
+			<div class="floatRight" id="exitEditBone">
+				<img src="img/close.png">
+			</div>
+			<div class = "floatLeft" >
+				<img src="img/backToParent.png">
+				<div class="inline">Back to parent bone</div>
+			</div>
+			<div class="newLine"></div>
+	
+			<div class="title">Images</div>
+			<div class="imageContainer"></div>
+			<div class="margin10 floatLeft">
+				<input type = "file" class="fileUpload" value="Upload new image"/>
+			</div>	
+			<div class="newLine"></div>
+			<div class="title">Description</div>
+			<div class="descriptionContainer">Lorem ipsum dolor sit amet,
+				consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+				ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+				eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+				gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				Lorem ipsum dolor sit amet,</div>
+			<div class="button">Edit</div>
+			<div class="newLine"></div>
+			<div id="subBoneContainer">
+				<div class="title">Subbones</div>
+				<div class="newLine">
+					<div id="treeStructureContainer" class="treeStructureContainer"></div>
+					<div class="childBoneViewer treeStructureContainer">
+						<div class="boneEntry">Bone1</div>
+						<div class="boneEntry">Bone2</div>
+						<div class="button">Add new</div>
+					</div>
+				</div>
+			</div>
+			<div class="newLine"></div>
 		</div>
 	</div>
 
-	<div id="classViewer">
+	<div class="valueContainer hidden">
+		<div class="columnValue id">n203</div>
+		<div class="columnValue type">Type</div>
+		<div class="columnValue description">Description</div>
+		<div class="columnValue images">Images</div>
 	</div>
-	
-	<div onclick="UIController.deleteResults()">
-		Showresults
+	<div class="valueContainer hidden">
+		<div class="columnValue id">n203</div>
+		<div class="columnValue type">Type</div>
+		<div class="columnValue description">Description</div>
+		<div class="columnValue images">Images</div>
 	</div>
-	
-	
-	<script type = "text/javascript" src = "js/clickEvents.js"></script>
-	<script type = "text/javascript" src = "library.js"></script>
-	<script type = "text/javascript" src = "js/UIConstants.js"></script>
-	<script type = "text/javascript" src = "js/HTMLElements.js"></script>
-	<script type = "text/javascript" src = "js/testData.js"></script>
-	<script type = "text/javascript" src = "js/variables.js"></script>
-	<script type = "text/javascript" src = "js/uiController.js"></script>
-</body > 
+	<script type="text/javascript" src="js/clickEvents.js"></script>
+	<script type="text/javascript" src="library.js"></script>
+	<script type="text/javascript" src="js/UIConstants.js"></script>
+	<script type="text/javascript" src="js/HTMLElements.js"></script>
+	<script type="text/javascript" src="js/testData.js"></script>
+	<script type="text/javascript" src="js/dataOperations.js"></script>
+	<script type="text/javascript" src="js/uiController.js"></script>
+</body>
 </html>

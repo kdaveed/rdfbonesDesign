@@ -6,6 +6,7 @@ var UIController = {
 		dataOperations.makeMaps(classes)
 		//dataOperations.createClassHierachryData(classes)
 		this.createHierarchy()
+		this.createSingleHierarchy()
 	},
 
 	initClickEvents : function() {
@@ -24,25 +25,30 @@ var UIController = {
 	 **************************************************************************/
 	
 	createHierarchy : function() {
-		console.log("Create Hieararchy")
 		$.each(classHierarcyVars.parents, function(index, value) {
-			console.log(value.label)
-			HTMLElements.classViewer.append(UIController.getChildrenDiv(value))
+			HTMLElements.selectCoherentClass.append(UIController.getChildrenDiv(value, false))
 		})
-		console.log(classHierarcyVars.parents)
 	},
 	
-	getChildrenDiv : function(parent) {
+	createSingleHierarchy : function() {
+		$.each(classHierarcyVars.parents, function(index, value) {
+			HTMLElements.selectSingleClass.append(UIController.getChildrenDiv(value, true))
+		})
+	},
+	
+	getChildrenDiv : function(parent, single) {
 
 		var container = UIConstants.getChildrenContainer()
+		var classNameNameContainer = UIConstants.getClassNameDiv()
 		var className1 = UIConstants.getClassNameDiv(parent.label)
 		var searchHit = UIConstants.getSearchHitDiv()
 		var className2 = UIConstants.getClassNameDiv()
+		classNameNameContainer.append(className1).append(searchHit).append(className2)
+		
 		var childrenContainer = ui.getNewDiv()
 		$.each(parent.children, function(index, value) {
-			childrenContainer.append(UIController.getChildrenDiv(value))
+			childrenContainer.append(UIController.getChildrenDiv(value, single))
 		})
-
 		if (parent.children.length > 0) {
 
 			var plusImage = UIConstants.getPlusImg().click(function() {
@@ -55,14 +61,18 @@ var UIController = {
 			})
 			parent.minusButton = minusImage
 			// Initially every element is closed
-			container.append(plusImage).append(minusImage.hide())
+			container.prepend(minusImage.hide()).prepend(plusImage)
 			classHierarcyVars.saveChildrenGroupDiv(childrenContainer)
+			if(!single){
+				classNameNameContainer.append(UIConstants.addInstanceImg(parent.label))
+			} 
 		} else {
 			var fillerDiv = UIConstants.getFillerDiv()
-			container.append(fillerDiv)
+			container.prepend(fillerDiv)
+			classNameNameContainer.append(UIConstants.addInstanceImg(parent.label))
 		}
-		container.append(className1).append(searchHit).append(className2)
 		
+		container.append(classNameNameContainer)
 		container.append(childrenContainer.hide())
 		
 		parent.div = container
@@ -83,10 +93,10 @@ var UIController = {
 	},
 	
 	showSearchResults : function() {
-		console.log(classHierarcyVars.parents)
+		//console.log(classHierarcyVars.parents)
 		$.each(classHierarcyVars.parents, function(index, value) {
 			if(value.toDisplay){
-				console.log("ToDisplay " + index + " label " + value.label)
+				//console.log("ToDisplay " + index + " label " + value.label)
 				value.div.show()
 				if(value.searchIndex > -1){
 					UIController.displaySearchHit(value)
@@ -109,7 +119,7 @@ var UIController = {
 	showChildrenDiv : function(parent) {
 		$.each(parent.children, function(index, value) {
 			if (value.toDisplay) {
-				console.log("ToDisplay " + index + " label " + value.label)
+				//console.log("ToDisplay " + index + " label " + value.label)
 				value.div.show()
 				if(value.searchIndex > -1){
 					UIController.displaySearchHit(value)
@@ -161,5 +171,23 @@ var UIController = {
 	showMinus : function(icon) {
 		icon.prev().css("display", "inline-block")
 		icon.hide()
-	}
+	},
+	
+	
+	saveBone : function(classLabel){
+		console.log(classLabel)
+		HTMLElements.selectCoherentClass.hide()
+		HTMLElements.editBone.show()
+		HTMLElements.subBoneContainer.hide()
+		//$.each(classHierarcyVars.parents, function(index, value){
+		if(classHierarcyVars.classObjects[classLabel].children.length > 0){
+			HTMLElements.subBoneContainer.show()
+			$.each(classHierarcyVars.classObjects[classLabel].children, function(index, val) {
+				HTMLElements.treeStructureContainer.append(UIController.getChildrenDiv(val, false))
+			})
+		} 
+		HTMLElements.selectCoherentClass.hide()
+    	HTMLElements.selectSingleClass.hide()
+
+	},
 }
