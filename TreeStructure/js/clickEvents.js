@@ -1,11 +1,27 @@
 
 var clickEvents = {
 		
-		
+	/***************************************************************************
+	 * Creating new bones 
+	 **************************************************************************/	
 	addBone : function(classLabel){
-		UIController.saveBone(classLabel)
+		UIController.showCompleteIncomplete()
+		UIController.saveBoneInScope(classLabel)
 	},
 	
+	selectComplete : function(){
+		
+	},
+	
+	selectIncomplete : function(){
+		
+	},
+	
+	exitNewBone : function(){
+		UIController.hideCompleteIncomplete()
+		UIController.saveBoneInScope("")
+	},
+
 	openAll : function(){
 
 		$("div#" + HTMLElements.classViewerID + " img").each(function(){
@@ -48,7 +64,43 @@ var clickEvents = {
 	},
 	
 	searchForString : function(textValue){
-		dataOperations.searchForString(textValue.toLowerCase())
+		DATAsearchForString(textValue.toLowerCase())
+	},
+	
+	/***************************************************************************
+	 * Show bone editor
+	 **************************************************************************/
+	
+	textSaveClick : function(type){
+		
+		dataEdit.setDivValue(type)
+		dataEdit.getSaveButton(type).hide()
+		if(dataEdit.getTextField(type).val() == null){
+			dataEdit.getAddButton(type).show()
+		} else { //There are value
+			dataEdit.getEditButton(type).show()
+		}
+	},
+	
+	textEditClick : function(type){
+		
+		dataEdit.setTextBoxValue(type)
+		if(dataEdit.getTextField(type).val() == null){
+			dataEdit.disableClear()
+		} else {
+			dataEdit.enableClear()
+		}
+		dataEdit.getEditButton(type).hide()
+		dataEdit.getClearButton(type).show()
+		dataEdit.getSaveButton(type).show()
+	},
+	
+	clearSetter : function(type){
+		if(dataEdit.getTextField(type).val() == 0){
+			dataEdit.disableClear()
+		} else {
+			dataEdit.enableClear()
+		}	
 	}
 }
 

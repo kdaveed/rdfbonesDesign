@@ -21,13 +21,11 @@ var dataLibrary = {
 	}
 }
 
-
 var ui = {
-		
+
 	getNewDiv : function(){
 		 return $("<div/>")
 	},
-	
 	
 	getNewDiv : function(classes){
 		 return $("<div/>").addClass(classes)
@@ -36,6 +34,7 @@ var ui = {
 	getNewDivT : function(text){
 		 return $("<div/>").text(text)
 	},
+
 	getNewDiv : function(classes, text){
 		 return $("<div/>").addClass(classes).text(text)
 	},
@@ -47,14 +46,12 @@ var ui = {
 	},
 	
 	selectorFieldWithout : function(dataset, value, text){
-		
 		var selector = this.getSelectorField()
 		this.selectorField(dataset, value, text, selector)
 		return selector
 	},
 	
 	createSelectorFieldWith : function(dataset, value, text, selectorMsg){
-		
 		var sel = this.getSelectorField()
 		$("<option/>" , {
 			text : selectorMsg
@@ -70,7 +67,10 @@ var ui = {
 				text : data[text] ,
 			}).appendTo(selector) 
 		})
-		
+	},
+	
+	getImgClass : function(src, class_){
+		return $("<img/>").attr("src", src).addClass(class_)
 	}
-		
 }
+

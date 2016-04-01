@@ -8,26 +8,26 @@ var csv2rdfUI = {
 		// Remove the literal from the literal list
 		variableInScope = columnName
 		csv2rdfUIData.initContainer(variableInScope)
-	
-		mappingContainer = ui.getNewDiv()
+		
+		mappingContainer = ui.getNewDiv("row")
 		var titleContainer = ui.getNewDiv()
 		var instanceContainer = ui.getNewDiv("instancesDiv variables nodeFieldHover inline").append(
 				csv2rdfUIConstant.instanceDiv(columnName))
 
-		var modify = csv2rdfUIConstant.getModifyImg().click(function(){
-			csv2rdfClickEvents.modifyMapping(variableInScope)
+		var modifyMap = csv2rdfUIConstant.getModifyImg("hidden").click(function(){
+			csv2rdfClickEvents.modifyMapping(variableInScope, $(this))
 		})	
-		titleContainer.append(instanceContainer).append(modify)
+		titleContainer.append(instanceContainer).append(modifyMap)
 		
-		firstCol = ui.getNewDiv("inline")
-		secondCol = ui.getNewDiv("inline")
+		firstCol = ui.getNewDiv("col")
+		secondCol = ui.getNewDiv("col")
 		$.each(list, function(index, value) {
 			firstCol.append(csv2rdfUIConstant.getValueDivForMapping(value))
 			secondCol.append(csv2rdfUIConstant.getClassSelectorDivForMapping(
 					variableInScope, value))
 		})
-		saveButton = ui.getNewDiv("generalButton hidden").text("Save").click(function() {
-			csv2rdfClickEvents.saveVariableMapping(variableInScope)
+		var saveButton = ui.getNewDiv("saveButton hidden").text("Save").click(function() {
+			csv2rdfClickEvents.saveVariableMapping(variableInScope, $(this))
 		})
 
 		tableContainer = ui.getNewDiv().append(firstCol).append(secondCol)
@@ -36,7 +36,7 @@ var csv2rdfUI = {
 		/***********************************************************************
 		 * Save the divs
 		 **********************************************************************/
-		csv2rdfUIData.saveMappingContainer(variableInScope, mappingContainer, saveButton)
+		csv2rdfUIData.saveMappingContainer(variableInScope, mappingContainer, saveButton, modifyMap)
 		csv2rdfHTML.dependentInstances.append(mappingContainer)
 	},
 

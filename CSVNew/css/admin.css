@@ -122,15 +122,6 @@
 	cursor : pointer
 }
 
-.saveButton {
-	border : 1px solid black;
-	border-radius : 3px;
-}
-.saveButton : hover{
-	cursor : pointer;
-	background-color : gray;
-}
-
 .nodeFieldHover : hover {
 	curson: pointer;
 }
@@ -163,6 +154,6 @@
 .columnValues{
 	padding : 4px;
 	border-bottom : 1px solid black;
-	width : 120px;
+	width : 170px;
 	margin-left : 12px;
 }

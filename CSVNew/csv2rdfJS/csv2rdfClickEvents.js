@@ -15,7 +15,6 @@ var csv2rdfClickEvents = {
 	},
 
 
-
 	/***************************************************************************
 	 * Class selection, empty, modify
 	 **************************************************************************/
@@ -28,11 +27,17 @@ var csv2rdfClickEvents = {
 	},
 
 	emptySelectionForMapping : function(variableInScope, value) {
-		csv2rdfUIData.setVariables(csv2rdfData.variableInScope, csv2rdfData.valueInScope)
-		csv2rdfUIData.getSelectedClass(variableInScope, value).text("No instance is created")
-		csv2rdfUIData.emptyDiv().hide()
+		//csv2rdfUIData.setVariables(csv2rdfData.variableInScope, csv2rdfData.valueInScope)
+		csv2rdfUIData.setVariables(variableInScope, value)
+		csv2rdfUIData.getSelectedClass().text("No instance")
+		csv2rdfUIData.getEmptyDiv().hide()
 		csv2rdfUIData.getClassSelectorDiv().hide()
-		csv2rdfUIData.getModifyButton().show()
+		csv2rdfUIData.getModifyButton().css('display', 'inline-block')
+		
+		csv2rdfData.numberOfSetValues++
+		if(csv2rdfData.numberOfSetValues == csv2rdfData.numberOfDistinctValues){
+			csv2rdfUIData.getSaveButton().show()
+		}
 	},
 
 	modifyValueMapping : function(variableInScope, value) {
@@ -41,16 +46,16 @@ var csv2rdfClickEvents = {
 		csv2rdfUIData.setVariables(csv2rdfData.variableInScope, csv2rdfData.valueInScope)
 		// Hide both because we do not which were selected
 		csv2rdfUIData.getSelectedClass().hide()
-		csv2rdfUIData.emptyDiv().show()
-		csv2rdfUIData.getClassSelectorDiv().show()
-		csv2rdfUIData.getModifyButton().hide()
+		csv2rdfUIData.emptyDiv().css('display', 'inline-block')
+		csv2rdfUIData.getClassSelectorDiv().css('display', 'inline-block')
+		csv2rdfUIData.getModifyButton().css('display', 'inline-block')
 		csv2rdfUIData.getSaveButton().hide()
 	},
 
-	modifyVariableMapping : function(variableInScope) {
+	modifyMapping : function(variableInScope, modifyImg) {
 		// Hide both because we do not which were selected
 		if(csv2rdfStates.onGoingMappingDefinition == false){
-			csv2rdfUIData.getClassSelectorDiv(variableInScope, value).show()
+			modifyImg.hide()
 			for (var key in csv2rdfUIData.valueMapElements[variableInScope]["values"]){
 				csv2rdfUIData.valueMapElements[variableInScope]["values"][key]["modify"].show()
 			}
@@ -58,11 +63,15 @@ var csv2rdfClickEvents = {
 		}
 	},
 	
-	saveVariableMapping : function(variableInScope){
+	saveVariableMapping : function(variableInScope, saveButton){
 		for (var key in csv2rdfUIData.valueMapElements[variableInScope]["values"]){
 			csv2rdfUIData.valueMapElements[variableInScope]["values"][key]["modify"].hide()
 		}
+		saveButton.hide()
+		csv2rdfUIData.getModifyMappingButton(variableInScope).css("display", "inline-block")	
 		csv2rdfStates.resetOnGoingMappingDefinition()
+		csv2rdfStates.resetOnGoingMappingDefinition()
+		csv2rdfData.finishMappingDefinition()
 	},
 	
 	/***************************************************************************
@@ -115,6 +124,7 @@ var csv2rdfClickEvents = {
 	addNewTriple : function() {
 		if (csv2rdfStates.state >= 3
 				&& csv2rdfStates.saveMode == csv2rdfStateConstants.saveMode.initial) {
+			csv2rdfHTML.triples.show()
 			csv2rdfController.addTriple()
 		}
 	},

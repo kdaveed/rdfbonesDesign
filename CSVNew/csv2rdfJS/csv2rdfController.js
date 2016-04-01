@@ -83,12 +83,11 @@ var csv2rdfController = {
 			csv2rdfUIData.getSelectedClass().text(variable)
 			csv2rdfUIData.getEmptyDiv().hide()
 			csv2rdfUIData.getClassSelectorDiv().hide()
+			csv2rdfUIData.getModifyButton().css('display', 'inline-block')
 			//DATA
 			csv2rdfData.saveClassToValue(classUri, variable)
 			csv2rdfData.numberOfSetValues++
 			if(csv2rdfData.numberOfSetValues == csv2rdfData.numberOfDistinctValues){
-				csv2rdfStates.resetOnGoingMappingDefinition()
-				csv2rdfData.finishMappingDefinition()
 				csv2rdfUIData.getSaveButton().show()
 			}
 		} else {

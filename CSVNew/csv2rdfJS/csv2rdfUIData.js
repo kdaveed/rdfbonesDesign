@@ -16,9 +16,14 @@ var csv2rdfUIData = {
 		this.valueMapElements[columnName]["values"] = new Object()
 	},
 
-	saveMappingContainer : function(variableInScope, containerDiv, saveButton){
+	saveMappingContainer : function(variableInScope, containerDiv, saveButton, modifyMap){
 		this.valueMapElements[variableInScope]["containerDiv"] = containerDiv
 		this.valueMapElements[variableInScope]["saveButton"] = saveButton
+		this.valueMapElements[variableInScope]["modifyMap"] = modifyMap
+	},
+	
+	getModifyMappingButton : function(variableInScope){
+		return this.valueMapElements[variableInScope]["modifyMap"]
 	},
 	
 	saveValueDivs : function(variableInScope, value, selectedClass, selectClass, empty, modify){

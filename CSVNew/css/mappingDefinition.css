@@ -1,0 +1,52 @@
+.valueList{
+	padding : 4px;
+	border-top : 1px solid white;
+	border-bottom : 1px solid black;
+	width : 170px;
+	margin-left : 12px;
+}
+
+.selectOption{
+	display : inline-block;
+	padding : 2px;
+	margin : 2px;
+	border : 1px solid black;
+	border-radius : 3px;
+	margin-left : 5px;
+}
+
+.selectOption:hover{
+	cursor : pointer;
+}
+
+.selectedOption{
+	display : inline-block;
+	padding : 2px;
+	margin : 4px;
+	margin-left : 20px;
+}
+
+.saveButton{
+	float : left;
+	margin : 2px;
+	padding : 2px;
+	border : 1px solid black;
+	border-radius : 3px;
+	margin-left : 12px;
+}
+
+.saveButton:hover{
+	cursor:pointer;
+}
+
+.row {
+  display: table;
+}
+
+.col {
+  display: table-cell;
+}
+
+.viewCases {
+	
+}

@@ -1,3 +1,48 @@
+.horizontalScroll {
+	overflow-x: auto;
+}
+
+/****
+* Textboxes
+*****/
+.normalTextBox {
+	
+}
+
+.middleTextBox {
+	width : 200px;
+	height: 40px;
+	border : 1px solid black;
+}
+
+/***
+** Fullscreen divs
+*/
+.fullScreen {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.4);
+	//text-align: center;
+}
+
+.fullScreenContainer {
+	opacity: 1;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 3px;
+	border: 2px solid black;
+	background-color: white;
+	display: table;
+}
+
 /****
 Buttons 
 */
@@ -23,7 +68,6 @@ Buttons
 /******
 *** Text align side by side image
 *******/
-
 .imgHelper {
 	display: inline-block;
 	height: 100%;
@@ -59,7 +103,7 @@ Buttons
 }
 
 .newLine {
-	clear : both;
+	clear: both;
 }
 
 .hidden {

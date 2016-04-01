@@ -1,0 +1,96 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red255\green255\blue255;\red0\green0\blue0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 SELECT ?subBoneLabel ?boneLabel\
+WHERE \
+\{\
+?subBone rdfs:label  ?subBoneLabel .\
+ ?subBone rdfs:subClassOf  ?restriction .\
+ ?restriction  owl:onProperty  <http://purl.obolibrary.org/obo/fma#regional_part_of> .\
+ ?restriction  owl:someValuesFrom ?bone .\
+ ?bone rdfs:label ?boneLabel.\
+\}\
+\
+SELECT ?subBoneLabel ?boneLabel\
+WHERE \
+\{\
+?subBone rdfs:label  ?subBoneLabel .\
+ ?subBone rdfs:subClassOf  ?restriction .\
+ ?restriction  owl:onProperty  <http://purl.obolibrary.org/obo/fma#systemic_part_of> .\
+ ?restriction  owl:someValuesFrom ?bone .\
+ ?bone rdfs:label ?boneLabel.\
+\}\
+\
+SELECT  ?superClassLabel\
+WHERE \
+\{\
+  ?class rdfs:label  ?label .\
+  FILTER regex( ?label, "Skeleton of head")\
+  ?class  rdfs:subClassOf  ?superClass .\
+  ?superClass rdfs:label  ?superClassLabel .\
+\}\
+\
+\
+SELECT ?subBoneLabel \
+WHERE \
+\{\
+ ?subBone rdfs:label  ?subBoneLabel .\
+ ?subBone rdfs:subClassOf  ?restriction .\
+ ?restriction  owl:onProperty  <http://purl.obolibrary.org/obo/fma#regional_part_of> .\
+ ?restriction  owl:someValuesFrom ?bone .\
+ ?bone rdfs:label ?boneLabel.\
+ FILTER regex(?boneLabel, "Neurocranium")\
+\}\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 SELECT ?subBoneLabel \
+WHERE \
+\{\
+ ?subBone rdfs:label  ?subBoneLabel .\
+ ?subBone rdfs:subClassOf  ?restriction .\
+ ?restriction  owl:onProperty  <http://purl.obolibrary.org/obo/fma#regional_part_of> .\
+ ?restriction  owl:someValuesFrom ?bone .\
+ ?bone rdfs:label ?boneLabel.\
+ FILTER regex(?boneLabel, "
+\f1\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Viscerocranium
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 ")\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+\
+\pard\pardeftab720
+
+\f2 \cf4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Right maxilla       \
+Right lacrimal bone     \
+Right inferior nasal concha\
+Left palatine bone"        \
+Vomer\
+Ethmoid               \
+Mandible                 \
+Right temporal bone\
+Left maxilla"               \
+Hyoid bone"\
+Left zygomatic bone\
+Right nasal bone\
+Left inferior nasal concha\
+Right zygomatic bone\
+Left temporal bone\
+Sphenoid bone\
+Left nasal bone\
+Right palatine bone\
+Left lacrimal bone\
+\
+\pard\pardeftab720
+\cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 	Left parietal bone\
+	Occipital bone\
+	Right parietal bone\
+	Frontal bone\cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+}

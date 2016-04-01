@@ -6,30 +6,39 @@ var csv2rdfUIConstant = {
 		return ui.getNewDiv("inline marginL20").append(ui.getImg(this.modifyImgSrc))
 	},
 	
+	getModifyImg : function(hidden){
+		return ui.getNewDiv("inline marginL20 " + hidden).append(ui.getImg(this.modifyImgSrc))
+	},
+	
+	
+	/***************************************************************************
+	 * Dependent Instance
+	 **************************************************************************/
+	
 	getValueDivForMapping : function(value){
-		return ui.getNewDiv("columnValues").text(value)
+		return ui.getNewDiv("valueList").text("\"" + value + "\" :")
 	},
 	
 	getClassSelectorDivForMapping : function(columnName, value){
 		
 		container = ui.getNewDiv()
-		selectedClass = ui.getNewDiv()
+		selectedClass = ui.getNewDiv("selectedOption")
 		
-		classSelect = ui.getNewDiv("columnValues hoverCursor inline").text("Select Class!")
+		classSelect = ui.getNewDiv("selectOption").text("Select Class!")
 			.click(function(){
 				csv2rdfClickEvents.classSelectionForMapping(columnName, value)
 			})
-		emptySelect = ui.getNewDiv("columnValues hoverCursor inline").text("Do not create instance")
+		emptySelect = ui.getNewDiv("selectOption").text("Do not create instance")
 			.click(function(){
 				csv2rdfClickEvents.emptySelectionForMapping(columnName, value)
 			})
 		
-		modify = this.getModifyImg().css("display","none").click(function(){
+		modifyMapping = this.getModifyImg("hidden").click(function(){
 			csv2rdfClickEvents.modifyMapping(columnName)
 		})
 		
-		csv2rdfUIData.saveValueDivs(columnName, value, selectedClass, classSelect, emptySelect, modify)
-		return container.append(selectedClass).append(classSelect).append(emptySelect).append(modify)
+		csv2rdfUIData.saveValueDivs(columnName, value, selectedClass, classSelect, emptySelect, modifyMapping)
+		return container.append(selectedClass).append(classSelect).append(emptySelect).append(modifyMapping)
 	},
 	
 	instanceDiv : function(text) {

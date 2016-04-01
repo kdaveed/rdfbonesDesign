@@ -2,9 +2,9 @@ var UIController = {
 
 	init : function() {
 		this.initClickEvents()
-		
-		dataOperations.makeMaps(classes)
-		//dataOperations.createClassHierachryData(classes)
+
+		DATA.makeMaps(classes)
+		// DATAcreateClassHierachryData(classes)
 		this.createHierarchy()
 		this.createSingleHierarchy()
 	},
@@ -18,24 +18,26 @@ var UIController = {
 			clickEvents.openAll()
 		})
 	},
-	
+
 
 	/***************************************************************************
-	 * Initialize 
+	 * Initialize
 	 **************************************************************************/
-	
+
 	createHierarchy : function() {
 		$.each(classHierarcyVars.parents, function(index, value) {
-			HTMLElements.selectCoherentClass.append(UIController.getChildrenDiv(value, false))
+			HTMLElements.selectCoherentClass.append(UIController
+					.getChildrenDiv(value, false))
 		})
 	},
-	
+
 	createSingleHierarchy : function() {
 		$.each(classHierarcyVars.parents, function(index, value) {
-			HTMLElements.selectSingleClass.append(UIController.getChildrenDiv(value, true))
+			HTMLElements.selectSingleClass.append(UIController.getChildrenDiv(
+					value, true))
 		})
 	},
-	
+
 	getChildrenDiv : function(parent, single) {
 
 		var container = UIConstants.getChildrenContainer()
@@ -43,11 +45,13 @@ var UIController = {
 		var className1 = UIConstants.getClassNameDiv(parent.label)
 		var searchHit = UIConstants.getSearchHitDiv()
 		var className2 = UIConstants.getClassNameDiv()
-		classNameNameContainer.append(className1).append(searchHit).append(className2)
-		
-		var childrenContainer = ui.getNewDiv()
+		classNameNameContainer.append(className1).append(searchHit).append(
+				className2)
+
+		var childrenContainer = html.getNewDiv()
 		$.each(parent.children, function(index, value) {
-			childrenContainer.append(UIController.getChildrenDiv(value, single))
+			childrenContainer
+					.append(UIController.getChildrenDiv(value, single))
 		})
 		if (parent.children.length > 0) {
 
@@ -63,18 +67,20 @@ var UIController = {
 			// Initially every element is closed
 			container.prepend(minusImage.hide()).prepend(plusImage)
 			classHierarcyVars.saveChildrenGroupDiv(childrenContainer)
-			if(!single){
-				classNameNameContainer.append(UIConstants.addInstanceImg(parent.label))
-			} 
+			if (!single) {
+				classNameNameContainer.append(UIConstants
+						.addInstanceImg(parent.label))
+			}
 		} else {
 			var fillerDiv = UIConstants.getFillerDiv()
 			container.prepend(fillerDiv)
-			classNameNameContainer.append(UIConstants.addInstanceImg(parent.label))
+			classNameNameContainer.append(UIConstants
+					.addInstanceImg(parent.label))
 		}
-		
+
 		container.append(classNameNameContainer)
 		container.append(childrenContainer.hide())
-		
+
 		parent.div = container
 		parent.className1 = className1
 		parent.searchHit = searchHit
@@ -82,23 +88,23 @@ var UIController = {
 		parent.childrenContainer = childrenContainer
 		return container
 	},
-	
+
 	/***************************************************************************
-	 * Search Results 
+	 * Search Results
 	 **************************************************************************/
 	deleteResults : function() {
 		$.each(classHierarcyVars.parents, function(index, value) {
 			value.div.hide()
 		})
 	},
-	
+
 	showSearchResults : function() {
-		//console.log(classHierarcyVars.parents)
+		// console.log(classHierarcyVars.parents)
 		$.each(classHierarcyVars.parents, function(index, value) {
-			if(value.toDisplay){
-				//console.log("ToDisplay " + index + " label " + value.label)
+			if (value.toDisplay) {
+				// console.log("ToDisplay " + index + " label " + value.label)
 				value.div.show()
-				if(value.searchIndex > -1){
+				if (value.searchIndex > -1) {
 					UIController.displaySearchHit(value)
 				} else {
 					UIController.displayNoSearchHit(value)
@@ -108,20 +114,18 @@ var UIController = {
 					UIController.showChildrenDiv(value)
 				}
 			} else {
-				//value.div.addClass("redBorder")
+				// value.div.addClass("redBorder")
 				value.div.hide()
 			}
 		})
 	},
-	
-	
 
 	showChildrenDiv : function(parent) {
 		$.each(parent.children, function(index, value) {
 			if (value.toDisplay) {
-				//console.log("ToDisplay " + index + " label " + value.label)
+				// console.log("ToDisplay " + index + " label " + value.label)
 				value.div.show()
-				if(value.searchIndex > -1){
+				if (value.searchIndex > -1) {
 					UIController.displaySearchHit(value)
 				} else {
 					UIController.displayNoSearchHit(value)
@@ -136,19 +140,22 @@ var UIController = {
 		})
 	},
 
-	displaySearchHit : function(element){
+	displaySearchHit : function(element) {
 		console.log("searchindex + " + element.searchIndex)
-		element.className1.text(element.label.substring(0, element.searchIndex))
-		element.searchHit.text(element.label.substring(element.searchIndex, element.searchIndex + classHierarcyVars.searchStringLength))
-		element.className2.text(element.label.substring(element.searchIndex + classHierarcyVars.searchStringLength))
+		element.className1
+				.text(element.label.substring(0, element.searchIndex))
+		element.searchHit.text(element.label.substring(element.searchIndex,
+				element.searchIndex + classHierarcyVars.searchStringLength))
+		element.className2.text(element.label.substring(element.searchIndex
+				+ classHierarcyVars.searchStringLength))
 	},
-	
-	displayNoSearchHit : function(element){
+
+	displayNoSearchHit : function(element) {
 		element.className1.text(element.label)
 		element.searchHit.text("")
 		element.className2.text("")
 	},
-	
+
 	setDisplay : function(element) {
 
 		element.childrenContainer.show()
@@ -172,22 +179,72 @@ var UIController = {
 		icon.prev().css("display", "inline-block")
 		icon.hide()
 	},
-	
-	
-	saveBone : function(classLabel){
+
+	saveBone : function(classLabel) {
 		console.log(classLabel)
 		HTMLElements.selectCoherentClass.hide()
 		HTMLElements.editBone.show()
 		HTMLElements.subBoneContainer.hide()
-		//$.each(classHierarcyVars.parents, function(index, value){
-		if(classHierarcyVars.classObjects[classLabel].children.length > 0){
+		// $.each(classHierarcyVars.parents, function(index, value){
+		if (classHierarcyVars.classObjects[classLabel].children.length > 0) {
 			HTMLElements.subBoneContainer.show()
-			$.each(classHierarcyVars.classObjects[classLabel].children, function(index, val) {
-				HTMLElements.treeStructureContainer.append(UIController.getChildrenDiv(val, false))
-			})
-		} 
+			$.each(classHierarcyVars.classObjects[classLabel].children,
+					function(index, val) {
+						HTMLElements.treeStructureContainer.append(UIController
+								.getChildrenDiv(val, false))
+					})
+		}
 		HTMLElements.selectCoherentClass.hide()
-    	HTMLElements.selectSingleClass.hide()
+		HTMLElements.selectSingleClass.hide()
 
 	},
+
+	/***************************************************************************
+	 * Creating new bones 
+	 **************************************************************************/
+
+	showCompleteIncomplete : function() {
+		HTMLElements.completeIncomplete.show()
+	},
+
+	hideCompleteIncomplete : function() {
+		HTMLElements.completeIncomplete.hide()
+	},
+	
+	showBoneEditor : function(instanceUri, singleBone){
+		var data = null
+		if(singleBone){
+			data = DATA.singleBones[instanceUri]
+		} else {
+			data = DATA.coherentBones[instanceUri]
+		}
+		HTMLElements.editBone.show()
+		if(data.label != null){
+			HTMLElements.label.text(data.label)
+			HTMLElements.labelEdit.show()
+			HTMLElements.labelAdd.hide()
+		} else {
+			HTMLElements.labelEdit.hide()
+			HTMLElements.labelAdd.show()
+			HTMLElements.label.text("")
+		}
+		
+		if(data.description != null){
+			HTMLElements.description.text(data.description)
+			HTMLElements.descriptionEdit.show()
+			HTMLElements.descriptionlAdd.hide()
+		} else {
+			HTMLElements.descriptionEdit.hide()
+			HTMLElements.descriptionAdd.show()
+			HTMLElements.description.text("")
+		}
+		
+		HTMLElements.widthSetting.empty()
+		$.each(data.images, function(index, value){
+			console.log(value)
+			HTMLElements.widthSetting.append(UIConstants.getImageView(value)) 
+		})
+	},
+	
+	
 }
