@@ -1,55 +1,3 @@
-/***************************************************************************
- * Here are the classes added, which about we do not care in the loader.js
- **************************************************************************/
-var ui = {
-
-	getDivId : function(id){
-		return html.getNewDiv().attr("id", id)
-	},
-		
-	getTitle : function(title){
-		return html.getNewDiv("tableTitle").text(title)
-	},
-	
-	getRowContainer : function(){
-		return html.getNewDiv("rowContainer")
-	},
-		
-	getColumnDiv : function(value) {
-		return html.getNewDiv("columnContainer").append(
-				html.getNewDiv("columnContent").text(value))
-	},
-
-	getImageContainer : function() {
-		// We need a constant div at first the
-		return html.getNewDiv("columnContainer").
-					append(html.getNewDiv("imagesOuterContainer").
-						append(html.getNewDiv("imagesInnerContainer")))
-	},
-
-	getImg : function(src, index) {
-		return html.getNewDiv("imgContainer").append(
-				html.getPreviewImage(src, "previewImg",index))
-	},
-	
-	getEditImg : function(src, index){
-		return html.getNewDiv("imageContainer")
-				.append(html.getPreviewImage(src, "previewImg", index))
-				.append(html.getNewDiv("imgCheckBoxContainer")
-						.append(html.getCheckBox()))
-	/*	<div class = "imageContainer">
-			<img src="" class = "image">
-			<div class = "imgCheckBoxContainer">
-				<input type = "checkbox"/>
-			</div>	
-		</div> 	*/
-	},
-	
-	getNewLineDiv : function() {
-		return html.getNewDiv("newLine")
-	},
-}
-
 /*******************************************************************************
  * This layer cares only about the HTML element creating and eventual input
  * class setting
@@ -61,6 +9,10 @@ var html = {
 		return $("<div/>")
 	},
 
+	getDivId : function(id){
+		return html.getNewDiv().attr("id", id)
+	},
+	
 	getNewDiv : function(classes) {
 		return $("<div/>").addClass(classes)
 	},
@@ -71,6 +23,14 @@ var html = {
 
 	getNewDiv : function(classes, text) {
 		return $("<div/>").addClass(classes).text(text)
+	},
+
+	getFullScreen : function(id){
+		return $("<div/>").addClass("fullScreen").attr("id", id)
+	}, 
+	
+	getFullScreenContainer : function(){
+		return $("<div/>").addClass("fullScreenContainer")
 	},
 
 	getSelectorField : function() {
@@ -109,11 +69,20 @@ var html = {
 				this.getImgClass(src, class_))
 	},
 
+	getImg : function(src) {
+		return $("<img/>").attr("src", src)
+	},
+	
 	getImgClass : function(src, class_) {
 		return $("<img/>").attr("src", src).addClass(class_)
 	},
 	
 	getCheckBox : function(){
 		return $("<input>").attr("type", "checkbox")
+	},
+	
+	getTextBox : function(){
+		return $("<input>").attr("type", "text")
 	}
+	
 }

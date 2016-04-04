@@ -1,4 +1,4 @@
-var DATA = {
+var treeData = {
 	/***************************************************************************
 	 * Variables
 	 **************************************************************************/
@@ -67,50 +67,32 @@ var DATA = {
 						.push(value)
 			})
 
-		// console.log(firstParentMap)
-		// console.log(classHierarcyVars.childrenMap)
-
+			
 		$.each(firstParentMap, function(index, value) {
 			objectId = classHierarcyVars.classMapping[index]
-			parentObject = DATA.createClassObject(classes[objectId].superClass)
-			// console.log(parentObject)
+			parentObject = treeData.createClassObject(classes[objectId].superClass)
 			classHierarcyVars.classObjects[parentObject.label] = parentObject
 			if (classHierarcyVars.childrenMap[index] != undefined) {
 				// It has a child
-				// console.log("Child")
-				// console.log(classHierarcyVars.childrenMap[index])
-				DATA.fillChildren(parentObject,
+				treeData.fillChildren(parentObject,
 						classHierarcyVars.childrenMap[index])
 			}
 			// Final
-			// console.log("Final parent object")
-			// console.log(parentObject)
 			classHierarcyVars.parents.push(parentObject)
 		})
-		console.log(classHierarcyVars.parents)
 	},
 
 	fillChildren : function(parentObject, childrenList) {
 		$.each(childrenList, function(index, value) {
 			var className = classes[value].subClass
-			var parentObj = DATA.createClassObject(className)
+			var parentObj = treeData.createClassObject(className)
 			classHierarcyVars.classObjects[parentObject.label] = parentObject
-			// console.log(parentObj)
 			if (classHierarcyVars.childrenMap[className.label] != undefined) {
 				// It has a child
-				// console.log("GrandChild")
-				// console.log(classHierarcyVars.childrenMap[className.label])
-				DATA.fillChildren(parentObj,
+				treeData.fillChildren(parentObj,
 						classHierarcyVars.childrenMap[className.label])
 			}
 			parentObject.children.push(parentObj)
-			// console.log("After new child")
-			// console.log(parentObject)
-			// console.log("Children")
-			$.each(parentObject.children, function(index, value) {
-				// console.log(value)
-			})
-			// console.log("End of children")
 		})
 	},
 
@@ -130,7 +112,7 @@ var DATA = {
 		console.log("SearchString  " + searchString)
 		var bools = []
 		$.each(classHierarcyVars.parents, function(index, value) {
-			bools.push(DATA.foundInChild(searchString, value))
+			bools.push(treeData.foundInChild(searchString, value))
 		})
 		console.log("Result : ")
 		console.log(classHierarcyVars.parents)
@@ -148,7 +130,7 @@ var DATA = {
 		}
 		$.each(parent.children, function(index, value) {
 			var bools = []
-			bools.push(DATA.foundInChild(searchString, value))
+			bools.push(treeData.foundInChild(searchString, value))
 
 			$.each(bools, function(index, boolValue) {
 				if (boolValue) {
@@ -200,7 +182,5 @@ var testData = {
 	}, ]
 }
 
-DATA.singleBones["1"] = new Object()
-DATA.singleBones["1"].images = [ "testImg/1.jpg", "testImg/2.jpg", "testImg/3.jpg"]
-	
-	
+treeData.singleBones["1"] = new Object()
+treeData.singleBones["1"].images = [ "testImg/1.jpg", "testImg/2.jpg", "testImg/3.jpg"]	

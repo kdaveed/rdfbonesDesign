@@ -1,0 +1,9 @@
+
+.container {
+	float : left;
+	border : 1px solid black;
+	width : 200px;
+	height : 200px;	
+	margin : 5px;
+	overflow-y : auto;
+}

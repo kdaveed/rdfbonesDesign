@@ -23,7 +23,6 @@ var clickEvents = {
 	},
 
 	openAll : function(){
-
 		$("div#" + HTMLElements.classViewerID + " img").each(function(){
 			if($(this).attr("src").indexOf("plus") > -1){
 				$(this).parent().hide()

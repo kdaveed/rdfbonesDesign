@@ -2,196 +2,55 @@
 <meta charset="utf8">
 <head>
 	<script type = "text/javascript" src="jquery-1.11.3.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/classTree.css">
-	<link rel="stylesheet" type="text/css" href="css/editBone.css">
-	<link rel="stylesheet" type="text/css" href="css/existingBone.css">
 	<link rel="stylesheet" type="text/css" href="css/lib.css">
 	<link rel="stylesheet" type="text/css" href="jsLibrary/previewJS/css/lightbox.css">
-	<link rel="stylesheet" type="text/css" href="jsLibrary/moduleLoad/css/modules.css">
 	
+	<link rel="stylesheet" type="text/css" href="jsLibrary/moduleLoader/css/tableView.css">
+	<link rel="stylesheet" type="text/css" href="jsLibrary/moduleLoader/css/treeView.css">	
+	<link rel="stylesheet" type="text/css" href="jsLibrary/moduleLoader/css/View.css">	
+	<link rel="stylesheet" type="text/css" href="jsLibrary/moduleLoader/css/boneEditor.css">	
+	
+	<link rel="stylesheet" type="text/css" href="css/UIModules/LiteralEditor.css">	
+	<link rel="stylesheet" type="text/css" href="css/UIModules/ImageEditor.css">
+	<link rel="stylesheet" type="text/css" href="css/UIModules/SubboneEditor.css">
 </head>
 
+
 <body>
-	
 	<div id = "pageContainer">
-		
-	</div>
-	<div id="testTable1" class="">
-	</div>
-	<div id="testTable"></div>
-	<script>
-		$("#testTable1").attr("ddd", "kdld").append($("<a/>").attr("data-lightbox", "dsd"))
-	</script>
-	<div id="filterContainer" class="filterContainer hidden">
-		<input type="text" id="search" class="searchBox"
-			value="Search for class">
-		<div id="openAll" class="generalButton inline floatRight marginL10">
-			Open all</div>
-		<div id="closeAll" class="generalButton inline floatRight marginL10">
-			Close all</div>
-	</div>
-
-	<!---------------------------------------------------------------------
-	Add new coherent bone
-	 --------------------------------------------------------------------->	
-	
-	<div class="addNewButton" id="addCoherentBoneContainer" >
-		<div class="textNextToImg">
-			Add new 
-		</div>
-		<div id="addCoherentBone" class ="imgFrame">
-			<span class="imgHelper"></span>
-			<img class="imgMiddle" src="img/addInstance.png" />
-		</div>
-	</div>
-	<div class="newLine"></div>
-	<!---------------------------------------------------------------------
-	Select class for new coherent bone
-	 --------------------------------------------------------------------->	
-	
-	<div id="selectCoherentClass" class="container hidden">
-		<div class="title">Select new coherent bone</div>
-	</div>
-	
-	
-	<div class="addNewButton" id="addSingleBoneContainer" >
-		<div class="textNextToImg">
-			Add new 
-		</div>
-		<div id="addSingleBone" class ="imgFrame">
-			<span class="imgHelper"></span>
-			<img class="imgMiddle" src="img/addInstance.png" />
-		</div>
-	</div>
-	
-	<div id="editSingleBone" class = "editBoneContainer hidden">
-		<div class="floatRight" id="exitEditSingleBone">
-			<img src="img/close.png">
-		</div>
-		<div >
-			<img src="img/backToParent.png">
-			<div class="inline">Back to parent bone</div>
-		</div>
-		<div class="newLine"></div>
-
-		<div class="title">Images</div>
-		<div class="imageContainer"></div>
-		<div class="margin10">
-			<input type = "file" class="fileUpload" value="Upload new image"/>
-		</div>	
-		<div class="title">Description</div>
-		<div class="descriptionContainer">Lorem ipsum dolor sit amet,
-			consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-			ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-			eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-			gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			Lorem ipsum dolor sit amet,</div>
-		<div class="button">Edit</div>
-	</div>
-	
-	<!---------------------------------------------------------------------
-	Select class for new single bone
-	 --------------------------------------------------------------------->	
-
-	<div id="selectSingleClass" class="container hidden">
-		<div class="title">Select new single bone</div>
-	</div>
-
-
-	<!---------------------------------------------------------------------
-	Edit  bone
-	 --------------------------------------------------------------------->	
-	<div id="completeIncomplete" class = "fullScreen">
-		<div id="completeIncompleteContainer" class = "fullScreenContainer completeIncompleteContainer">
-			<div id = "exitCompleteIncomplete" class ="floatRight">
-				<img src = "img/close.png">
-			</div>
-			<div id="selectComplete"class="completeness">
-				Complete
-			</div>
-			<div id="selectIncomplete" class="completeness">
-				Incomplete
-			</div>
-		</div>
-	</div>
-
-	<!---------------------------------------------------------------------
-	Edit  bone
-	 --------------------------------------------------------------------->	
-	<div id="editBone" class="fullScreen">
-		<div  class="editBoneContainer">
-			<div class="floatRight" id="exitEditBone">
-				<img src="img/close.png">
-			</div>
-			<div class = "floatLeft" >
-				<img src="img/backToParent.png">
-				<div class="inline">Back to parent bone</div>
-			</div>
-			<div class="newLine"></div>
-			
-			<!-- Label -->
-			<div class="title">Label</div>
-			<div id="label"></div>
-			<div id="labelAdd" class="button">Add</div>
-			<div id="labelEdit" class="button">Edit</div>
-			<div class="newLine"></div>
-			
-			<!-- Images -->
-			<div class="title">Images</div>
-				<div id = "imageContainer" class="imageContainer">
-					<div id = "widthSetting"></div>
-				</div>
-				<div class="margin10 ">
-					<input type = "file" class="fileUpload" value="Upload new image"/>
-				</div>	
-			<div class="newLine"></div>
-			
-			<!-- Description -->
-			<div class="title">Description</div>
-			<div id = "description" class="descriptionContainer"></div>
-			<input type="text" id="descriptionInput"  class="floatLeft middleTextBox hidden">
-			<div id="descriptionAdd" class="button ">Add</div>
-			<div id="descriptionEdit" class="button hidden">Edit</div>
-			<div id="descriptionSave" class="button hidden">Save</div>
-			<div class="newLine"></div>
-			
-			<!-- Containers -->
-			<div id="subBoneContainer">
-				<div class="title">Subbones</div>
-				<div class="newLine">
-					<div id="treeStructureContainer" class="treeStructureContainer"></div>
-					<div class="childBoneViewer treeStructureContainer">
-						<div class="boneEntry">Bone1</div>
-						<div class="boneEntry">Bone2</div>
-						<div class="button">Add new</div>
-					</div>
-				</div>
-			</div>
-			<div class="newLine"></div>
-		</div>
-	</div>
-	<div onclick = "UIController.showBoneEditor('1', true)">
-		TestView
-	</div>
-	<div class="valueContainer hidden">
-		<div class="columnValue id">n203</div>
-		<div class="columnValue type">Type</div>
-		<div class="columnValue description">Description</div>
-		<div class="columnValue images">Images</div>
 	</div>
 	<script type="text/javascript" src="js/ClickEvents.js"></script>
 	<script type="text/javascript" src="jsLibrary/library.js"></script>
 	<script type="text/javascript" src="js/UIConstants.js"></script>
+	<script type="text/javascript" src="js/Controller.js"></script>
 	<script type="text/javascript" src="js/HTMLElements.js"></script>
 	<script type="text/javascript" src="js/testData.js"></script>
-	<script type="text/javascript" src="js/DATA.js"></script>
 	<script type="text/javascript" src="js/Network.js"></script>
 	<script type="text/javascript" src="js/uiController.js"></script>
 	<script type="text/javascript" src="jsLibrary/previewJS/js/lightbox.js"></script>
+	
+	<!-- Data Edit -->
 	<script type="text/javascript" src="jsLibrary/dataEdit/js/library.js"></script>
 	<script type="text/javascript" src="jsLibrary/dataEdit/js/stringOperation.js"></script>
-	<script type="text/javascript" src="jsLibrary/moduleLoad/js/html.js"></script>
-	<script type="text/javascript" src="jsLibrary/moduleLoad/js/configData.js"></script>
-	<script type="text/javascript" src="jsLibrary/moduleLoad/js/loader.js"></script>
+	<script type="text/javascript" src="jsLibrary/dataEdit/js/treeData.js"></script>
+	<script type="text/javascript" src="jsLibrary/dataEdit/js/configData.js"></script>
+	
+	<!-- Module loader -->
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/html.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/UI.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/pageLoader.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/tableLoader.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/tableLoaderUI.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/treeLoader.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/treeLoaderUI.js"></script>
+	<script type="text/javascript" src="jsLibrary/moduleLoader/js/boneEditor.js"></script>
+	<!-- UI Modules -->
+	<script type="text/javascript" src="jsLibrary/UIModules/ImageEditor.js"></script>
+	<script type="text/javascript" src="jsLibrary/UIModules/LiteralEditor.js"></script>
+	<script type="text/javascript" src="jsLibrary/UIModules/SubboneEditor.js"></script>
+	<script type="text/javascript" src="jsLibrary/UIModules/SingleElements.js"></script>
+	
+	<div id="a">ViewTest</div>
+
 </body>
 </html>

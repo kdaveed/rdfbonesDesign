@@ -1,22 +1,28 @@
-var controller = {
+var Controller = {
 		
 	/***************************************************************************
 	 * Creating new bones 
 	 **************************************************************************/
-	saveBoneInScope : function(classLabel){
-		DATA.classLabelInScope = classLabel
+
+	openSingleBoneEditor : function(uri){
+		
+		UIController.showBoneEditor(singleBones.uri) 
+	},
+		
+	openCoherentBoneViewer : function(uri){
+		
+		UIController.showBoneEditor(coherentBones.uri) 
 	},
 	
-	addCompleteBone : function(){
-		
+	plusImage : function(icon, childrenContainer){
+		UIController.showPlus(icon, $(this))
+		childrenContainer.show()
+		console.log("Plus")
 	},
-		
-	addInCompleteBone : function(){
-    	HTMLElements.completeIncompleteContainer.empty().append(html.getNewDiv())
-    	HTMLElements.completeIncompleteContainer.animate({
-    		henight : "60px" ,
-    	}, 650)
-    	.append(UIConstants.getLoadindGif())
-	},	
+
+	minusImage : function(icon, childrenContainer){
+		UIController.showMinus(icon, $(this))
+		childrenContainer.hide()
+	},
 	
 }

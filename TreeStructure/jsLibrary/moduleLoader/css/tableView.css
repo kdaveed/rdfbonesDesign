@@ -1,4 +1,12 @@
 .tableTitle {
+	margin : 10px 2px;
+	display : inline-block;
+	font-size : 18px;
+ 	border-bottom : 1px solid;
+	padding : 3px;
+}
+
+.columnTitle {
 	display : inline-block;
 	width : 170px;
 	border-bottom : 1px solid black;

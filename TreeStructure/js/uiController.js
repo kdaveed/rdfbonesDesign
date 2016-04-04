@@ -1,9 +1,19 @@
 var UIController = {
 
+	/***************************************************************************
+	 * Modules that are callable
+	 **************************************************************************/
+
+	modules : new Object(),	
+	
+	showBoneEditor : function(data){
+		this.modules["boneEditor"].show(data)
+	},
+	
 	init : function() {
 		this.initClickEvents()
 
-		DATA.makeMaps(classes)
+		treeData.makeMaps(classes)
 		// DATAcreateClassHierachryData(classes)
 		this.createHierarchy()
 		this.createSingleHierarchy()
@@ -18,7 +28,6 @@ var UIController = {
 			clickEvents.openAll()
 		})
 	},
-
 
 	/***************************************************************************
 	 * Initialize
@@ -200,7 +209,7 @@ var UIController = {
 	},
 
 	/***************************************************************************
-	 * Creating new bones 
+	 * Creating new bones
 	 **************************************************************************/
 
 	showCompleteIncomplete : function() {
@@ -210,41 +219,8 @@ var UIController = {
 	hideCompleteIncomplete : function() {
 		HTMLElements.completeIncomplete.hide()
 	},
-	
-	showBoneEditor : function(instanceUri, singleBone){
-		var data = null
-		if(singleBone){
-			data = DATA.singleBones[instanceUri]
-		} else {
-			data = DATA.coherentBones[instanceUri]
-		}
-		HTMLElements.editBone.show()
-		if(data.label != null){
-			HTMLElements.label.text(data.label)
-			HTMLElements.labelEdit.show()
-			HTMLElements.labelAdd.hide()
-		} else {
-			HTMLElements.labelEdit.hide()
-			HTMLElements.labelAdd.show()
-			HTMLElements.label.text("")
-		}
-		
-		if(data.description != null){
-			HTMLElements.description.text(data.description)
-			HTMLElements.descriptionEdit.show()
-			HTMLElements.descriptionlAdd.hide()
-		} else {
-			HTMLElements.descriptionEdit.hide()
-			HTMLElements.descriptionAdd.show()
-			HTMLElements.description.text("")
-		}
-		
-		HTMLElements.widthSetting.empty()
-		$.each(data.images, function(index, value){
-			console.log(value)
-			HTMLElements.widthSetting.append(UIConstants.getImageView(value)) 
-		})
+
+	showBoneEditor : function(instanceUri, singleBone) {
+
 	},
-	
-	
 }

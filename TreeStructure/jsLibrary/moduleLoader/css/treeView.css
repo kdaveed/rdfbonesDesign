@@ -78,7 +78,14 @@
 }
 
 .childrenContainer {
-	margin-left: 17px;
+	margin-left: 8px;
+}
+
+.treeViewImgContainer {
+	vertical-align : middle;
+	display : inline-block;
+	margin : 3px;
+	width : 16px;
 }
 
 .imgContainer1 {
@@ -87,7 +94,6 @@
 	margin : 3px;
 	width : 16px;
 }
-
 
 .classLabel {
 	line-height: 20px;

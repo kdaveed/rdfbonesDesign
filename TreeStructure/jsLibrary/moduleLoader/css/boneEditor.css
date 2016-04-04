@@ -1,3 +1,10 @@
+.moduleTitle {
+	display : inline-block;
+	border-bottom : 1px solid black;
+	padding : 2px;
+	margin-bottom : 3px;
+}
+
 .editBoneContainer{
 	opacity: 1 ;
 	position:fixed;
@@ -14,18 +21,6 @@
 .descriptionContainer{
 	margin : 5px 0 0 5px;
 	width : 550px;
-}
-
-.button{
-	background-color : #E8E8E8;
-	padding : 4px;
-	margin : 5px 0 0 5px;
-	float : left;
-	border-radius : 4px;
-}
-
-.button:hover{
- 	cursor : pointer;	
 }
 
 .boneEntry {
@@ -82,4 +77,8 @@
 #widthSetting {
 	overflow-x: auto;
     white-space: nowrap
+}
+
+.addNewButton {
+	margin : 10px;
 }

@@ -7,10 +7,10 @@ var network = {
 		//newUri = resp.newUri
 	
 		newUri = "http://exampleOrg"
-		DATA.uriInScope = newUri 
+		treeData.uriInScope = newUri 
 		switch(type){
 			case "singleBone" : 
-				DATA.singleBones[newUri] = new Object()
+				treeData.singleBones[newUri] = new Object()
 			default : break;
 
 		}
